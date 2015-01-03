@@ -1,10 +1,6 @@
-app.PokemonList = Backbone.Collection.extend({
-  model: app.Pokemon,
-  localStorage: new Backbone.LocalStorage("PokemonCollection")
+App.Collection.Pokemon = Backbone.Collection.extend({
+  model: App.Model.Pokemon,
+  localStorage: new Backbone.LocalStorage("App.Collection.Pokemon")
 });
 
-app.list = new app.PokemonList();
-app.list.create({name: 'Bulbasaur'});
-app.list.create({name: 'Charmander'});
-
-console.log(app.list.pluck('name'));
+// localStorage: new Backbone.LocalStorage("App.Collection.Pokemon")

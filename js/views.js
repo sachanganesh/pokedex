@@ -1,4 +1,4 @@
-app.PokemonView = Backbone.View.extend({
+App.View.PokemonView = Backbone.View.extend({
   tagName: 'li',
   template: _.template($('#pokemon-template').html()),
   render: function() {
@@ -7,18 +7,20 @@ app.PokemonView = Backbone.View.extend({
   }
 });
 
-app.AppView = Backbone.View.extend({
+App.View.AppView = Backbone.View.extend({
   el: 'ol',
   initialize: function () {
-    console.log('hello there')
-    app.list.each(this.add, this);
-    console.log('initialized');
+    App.Collection.pokemonList = new App.Collection.Pokemon();
+    for (var i = 1; i <= 30; i++) {
+      App.Collection.pokemonList.create({natID: i});
+    }
+    console.log(App.Collection.pokemonList);
   },
   add: function (pokemon) {
-    console.log('adding..');
-    var view = new app.PokemonView({model: pokemon});
+    console.log('error?')
+    var view = new App.View.PokemonView({model: pokemon});
     this.$el.append(view.render().el);
   }
 });
 
-app.appView = new app.AppView();
+App.View.appView = new App.View.AppView();

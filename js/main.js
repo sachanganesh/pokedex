@@ -1,2 +1,5 @@
-var app = {};
-console.log('loading...');
+var App = {
+  Model: {},
+  Collection: {},
+  View: {}
+};
