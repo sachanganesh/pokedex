@@ -4,7 +4,7 @@ $(function () {
     template: _.template($('#pokemon-template').html()),
     render: function() {
       this.$el.html(this.template(this.model.toJSON()));
-      return this; // enable chained calls
+      return this;
     }
   });
 
@@ -12,19 +12,18 @@ $(function () {
     el: 'ol',
     initialize: function () {
       App.Collection.pokemonList = new App.Collection.Pokemon();
-      App.Collection.pokemonList.fetch({
-        success: function (list) {
-          list.each(function (pokemon) {
-            console.log('adding');
-            var view = new App.View.PokemonView({model: pokemon});
-            $('ol').append(view.render().el);
-          }, this);
-      }});
+      App.Collection.pokemonList.on('reset', this.addAll, this);
+      App.Collection.pokemonList.on('add', this.addOne, this);
+      App.Collection.pokemonList.fetch();
     },
-    add: function (pokemon) {
-      console.log('adding');
+    addOne: function (pokemon) {
       var view = new App.View.PokemonView({model: pokemon});
-      this.$el.append(view.render().el);
+      $('ol').append(view.render().el);
+    },
+    addAll: function () {
+      App.Collection.pokemonList.each(function (pokemon) {
+        this.addOne(pokemon);
+      }, this);
     }
   });
 

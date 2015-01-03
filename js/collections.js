@@ -9,3 +9,10 @@ $(function () {
 });
 
 // localStorage: new Backbone.LocalStorage("App.Collection.Pokemon")
+
+// ,
+// comparator: function (pokemon) {
+//   console.log(JSON.stringify(pokemon))
+//   var val = parseInt(pokemon.resource_uri.substring(15, pokemon.resource_uri.length - 1));
+//   return val;
+// }
