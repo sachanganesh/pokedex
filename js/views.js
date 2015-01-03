@@ -21,11 +21,16 @@ $(function () {
       $('ol').append(view.render().el);
     },
     addAll: function () {
-      App.Collection.pokemonList.each(function (pokemon) {
-        this.addOne(pokemon);
-      }, this);
+      App.Collection.pokemonList.each(this.addOne, this);
     }
   });
 
   App.View.appView = new App.View.AppView();
 });
+
+// ,
+// lockAndLoad: function (pokemon) {
+//   pokemon.url = pokemon.resource_uri;
+//   pokemon.on('change', this.addOne, this);
+//   pokemon.fetch();
+// }
