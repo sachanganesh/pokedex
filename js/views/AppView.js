@@ -1,13 +1,4 @@
 $(function () {
-  App.View.PokemonView = Backbone.View.extend({
-    tagName: 'li',
-    template: _.template($('#pokemon-template').html()),
-    render: function() {
-      this.$el.html(this.template(this.model.toJSON()));
-      return this;
-    }
-  });
-
   App.View.AppView = Backbone.View.extend({
     el: 'ol',
     initialize: function () {
@@ -27,10 +18,3 @@ $(function () {
 
   App.View.appView = new App.View.AppView();
 });
-
-// ,
-// lockAndLoad: function (pokemon) {
-//   pokemon.url = pokemon.resource_uri;
-//   pokemon.on('change', this.addOne, this);
-//   pokemon.fetch();
-// }
