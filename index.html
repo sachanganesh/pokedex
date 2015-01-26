@@ -22,7 +22,6 @@
     <h1>Welcome to Sachan's Pokedex!</h1>
     <h3>List of Unorganized Pokemon</h3>
     <section id="PokedexApp">
-      <div id="Test">Test</div>
       <ol id="List"></ol>
     </section>
 
@@ -33,14 +32,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone-localstorage.js/1.1.14/backbone.localStorage-min.js"></script>
 
     <script type="text/template" id="pokemon-template">
-      <%- name %>
+      <%- identifier %>
     </script>
 
     <script src="js/app.js"></script>
     <script src="js/models/PokemonModel.js"></script>
     <script src="js/collections/PokemonCollection.js"></script>
-    <script type="text/jsx" src="js/views/PokemonView.js"></script>
-    <script type="text/jsx" src="js/views/PokedexView.js"></script>
+    <script src="js/views/PokemonView.js"></script>
+    <script src="js/views/PokedexView.js"></script>
 
   </body>
 </html>
