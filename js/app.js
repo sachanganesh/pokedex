@@ -52,14 +52,16 @@ $(function () {
 	*/
 	App.Router.Pokedex = Backbone.Router.extend({
 		routes: {
-			'': 'renderPokedex',
+			'/': 'renderPokedex',
 			'pokemon/:natId': 'renderPokemon'
 		},
-		renderPokedex: function () {},
+		renderPokedex: function () {
+			App.Collection.pokemonList.trigger('notAccessed');
+		},
 		renderPokemon: function (natId) {
 			if (natId !== null) {
 				window.filter = natId.trim() || '';
-				App.Collection.pokemonList.trigger('natIdChange')
+				App.Collection.pokemonList.trigger('accessed')
 			}
 		}
 	});
@@ -103,12 +105,17 @@ $(function () {
 		el: 'section#PokedexApp',
 		initialize: function () {
 			App.Collection.pokemonList.on('reset', this.renderMain, this);
-			App.Collection.pokemonList.on('natIdChange', this.renderPokemon, this);
+			App.Collection.pokemonList.on('notAccessed', this.renderMain, this);
+			App.Collection.pokemonList.on('accessed', this.renderPokemon, this);
 			App.Collection.pokemonList.fetch({reset: true});
 		},
 		renderMain: function () {
-			var view = new App.View.MainView();
-			this.$el.html(view.render().el);
+			if (Backbone.history.fragment === '') {
+				var view = new App.View.MainView();
+				this.$el.html(view.render().el);
+			} else {
+				App.Collection.pokemonList.trigger('accessed');
+			}
 		},
 		renderPokemon: function () {
 			if (window.filter) {
@@ -120,15 +127,4 @@ $(function () {
 
 	// Instance
 	App.View.appView = new App.View.AppView();
-
-
-	/**
-	*
-	*
-	*	INITIALIZERS
-	*
-	*
-	*/
-
-
 });

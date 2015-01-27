@@ -30,15 +30,20 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone-localstorage.js/1.1.14/backbone.localStorage-min.js"></script>
 
     <script type="text/template" id="main-template">
-      <h1 class="title">Pokedex</h1>
-      <h2 class="subtitle">An attempt to learn Backbone.js.</h2>
-      <div class="center-btns">
-        <a href="#" class="btn">Open Device</a>
+      <div class="landing-page">
+        <h1 class="title">Pokedex</h1>
+        <h2 class="subtitle">An attempt to learn Backbone.js.</h2>
+        <div class="center-btns">
+          <a href="#/pokemon/1" class="btn">Open Device</a>
+        </div>
       </div>
     </script>
 
     <script type="text/template" id="pokemon-template">
-      <%- identifier %>
+      <div class="pokemon-page">
+        <h1 class="">Pokedex</h1>
+        <%- identifier %>
+      </div>
     </script>
 
     <script src="js/app.js"></script>
