@@ -52,9 +52,13 @@ $(function () {
 	*/
 	App.Router.Pokedex = Backbone.Router.extend({
 		routes: {
-			'pokemon/:natId': 'render'
+			'': 'renderPokedex',
+			'pokemon/:natId': 'renderPokemon'
 		},
-		render: function (natId) {
+		renderPokedex: function () {
+			console.log('root accessed');
+		},
+		renderPokemon: function (natId) {
 			if (natId !== null) {
 				console.log('natId = ' + natId);
 				window.filter = natId.trim() || '';
@@ -93,22 +97,14 @@ $(function () {
 	App.View.AppView = Backbone.View.extend({
 		el: 'ul',
 		initialize: function () {
-			App.Collection.pokemonList.on('reset', this.addAll, this);
-			// App.Collection.pokemonList.on('add', this.renderOne, this);
-			App.Collection.pokemonList.on('natIdChange', this.addAll, this);
+			App.Collection.pokemonList.on('reset', this.renderPokemon, this);
+			App.Collection.pokemonList.on('natIdChange', this.renderPokemon, this);
 			App.Collection.pokemonList.fetch({reset: true});
 		},
-		addOne: function (pokemon) {
-			var view = new App.View.PokemonView({model: pokemon});
-			this.$el.append(view.render().el);
-		},
-		addAll: function () {
-			// App.Collection.pokemonList.each(this.addOne, this);
+		renderPokemon: function () {
 			if (window.filter) {
 				var view = new App.View.PokemonView({model: App.Collection.pokemonList.get(window.filter)});
 				this.$el.html(view.render().el);
-			} else {
-				console.log('Error: no params specified')
 			}
 		}
 	});
