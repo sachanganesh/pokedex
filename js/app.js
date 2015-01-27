@@ -52,7 +52,7 @@ $(function () {
 	*/
 	App.Router.Pokedex = Backbone.Router.extend({
 		routes: {
-			'/': 'renderPokedex',
+			'': 'renderPokedex',
 			'pokemon/:natId': 'renderPokemon'
 		},
 		renderPokedex: function () {
