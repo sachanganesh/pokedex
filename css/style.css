@@ -1,0 +1,44 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300);
+
+html { font-size: 67.5% ;}
+
+h1 {
+	font-family: "Open Sans";
+	font-weight: 300;
+	font-size: 8rem;
+	color: #ED5565;
+	text-align: center;
+}
+
+h2 {
+	font-family: "Open Sans Condensed";
+	font-weight: 300;
+	font-size: 4rem;
+	color: #AAB2BD;
+	text-align: center;
+}
+
+.title {
+	margin-top: 12rem;
+}
+
+.subtitle {
+	margin-top: -5rem;
+}
+
+.center-btns {
+	margin-top: 8rem;
+	text-align: center;
+}
+
+a.btn {
+	font-family: "Open Sans";
+	font-weight: 300;
+	font-size: 1.75rem;
+	background-color: #ED5565;
+	color: white;
+	padding: 1.5rem 2rem;
+	border-radius: 4px;
+	text-decoration: none;
+}
