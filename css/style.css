@@ -6,33 +6,33 @@ html { font-size: 67.5% ;}
 h1 {
 	font-family: "Open Sans";
 	font-weight: 300;
-	font-size: 8rem;
 	color: #ED5565;
-	text-align: center;
 }
 
 h2 {
 	font-family: "Open Sans Condensed";
 	font-weight: 300;
-	font-size: 4rem;
 	color: #AAB2BD;
-	text-align: center;
 }
 
-.title {
+.landing-page .title {
+	font-size: 8rem;
+	text-align: center;
 	margin-top: 5rem;
 }
 
-.subtitle {
+.landing-page .subtitle {
+	font-size: 4rem;
+	text-align: center;
 	margin-top: -5rem;
 }
 
-.center-btns {
+.landing-page .center-btns {
 	margin-top: 8rem;
 	text-align: center;
 }
 
-a.btn {
+.landing-page a.btn {
 	font-family: "Open Sans";
 	font-weight: 300;
 	font-size: 1.75rem;
