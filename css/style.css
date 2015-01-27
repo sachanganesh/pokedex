@@ -16,29 +16,29 @@ h2 {
 }
 
 .landing-page .title {
-	font-size: 4rem;
+	font-size: 6rem;
 	text-align: center;
-	margin-top: 2.5rem;
+	margin-top: 3.75rem;
 }
 
 .landing-page .subtitle {
-	font-size: 2rem;
+	font-size: 3rem;
 	text-align: center;
-	margin-top: -2.5rem;
+	margin-top: -3.75rem;
 }
 
 .landing-page .center-btns {
-	margin-top: 4rem;
+	margin-top: 6rem;
 	text-align: center;
 }
 
 .landing-page a.btn {
 	font-family: "Open Sans";
 	font-weight: 300;
-	font-size: .875rem;
+	font-size: 1.3125rem;
 	background-color: #ED5565;
 	color: white;
-	padding: .75rem 1rem;
-	border-radius: 2px;
+	padding: 1.125rem 1.5rem;
+	border-radius: 3px;
 	text-decoration: none;
 }
