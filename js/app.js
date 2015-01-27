@@ -55,16 +55,11 @@ $(function () {
 			'': 'renderPokedex',
 			'pokemon/:natId': 'renderPokemon'
 		},
-		renderPokedex: function () {
-			console.log('root accessed');
-		},
+		renderPokedex: function () {},
 		renderPokemon: function (natId) {
 			if (natId !== null) {
-				console.log('natId = ' + natId);
 				window.filter = natId.trim() || '';
 				App.Collection.pokemonList.trigger('natIdChange')
-			} else {
-				console.log('No params specified');
 			}
 		}
 	});
@@ -83,6 +78,16 @@ $(function () {
 	*
 	*/
 
+	/* View for landing page */
+	App.View.MainView = Backbone.View.extend({
+		tagName: 'div',
+		template: _.template($('#main-template').html()),
+		render: function () {
+			this.$el.html(this.template);
+			return this;
+		}
+	})
+
 	/* View for a single Pokemon */
 	App.View.PokemonView = Backbone.View.extend({
 		tagName: 'li',
@@ -95,11 +100,15 @@ $(function () {
 
 	/* View for a complete Pokedex, composed of multiple Pokemon */
 	App.View.AppView = Backbone.View.extend({
-		el: 'ul',
+		el: 'section#PokedexApp',
 		initialize: function () {
-			App.Collection.pokemonList.on('reset', this.renderPokemon, this);
+			App.Collection.pokemonList.on('reset', this.renderMain, this);
 			App.Collection.pokemonList.on('natIdChange', this.renderPokemon, this);
 			App.Collection.pokemonList.fetch({reset: true});
+		},
+		renderMain: function () {
+			var view = new App.View.MainView();
+			this.$el.html(view.render().el);
 		},
 		renderPokemon: function () {
 			if (window.filter) {
