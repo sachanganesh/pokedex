@@ -1,4 +1,9 @@
 $(function() {
+	/**
+	 *	app
+	 *
+	 *	object containing all application properties
+	*/
 	var app = {
 		reference: {},
 		view: {},
@@ -19,11 +24,17 @@ $(function() {
 		app.collection.pokedex = res;
 	});
 
+	/**
+	 *	anonymous
+	 *
+	 *	invoked in order to render specific pokemon
+	*/
 	(function () {
 		var routes = {
 			'/pokemon/:id': function (id) {
+				console.log(id);
 				app.reference.pokemonID = parseInt(id);
-				if (app.collection.pokedex == null)
+				if (!app.collection.pokedex)
 					responseStream.subscribe(function () {
 						renderPokemon(app.reference.pokemonID);
 					});
@@ -33,11 +44,11 @@ $(function() {
 
 		var router = Router(routes);
 		router.init();
-	})();
 
-	function renderPokemon(id) {
-		var i = id - 1;
-		if (app.view.pokemon == null) app.view.pokemon = rivets.bind($('#pokemon'), {pokemon: app.collection.pokedex[i]});
-		else app.view.pokemon.update({pokemon: app.collection.pokedex[i]});
-	}
+		function renderPokemon(id) {
+			var i = id - 1;
+			if (!app.view.pokemon) app.view.pokemon = rivets.bind($('#pokemon'));
+			app.view.pokemon.update({pokemon: app.collection.pokedex[i]});
+		}
+	})();
 });
