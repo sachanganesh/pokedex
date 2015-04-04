@@ -1,54 +1,88 @@
 $(function() {
 	/**
-	 *	app
-	 *
-	 *	object containing all application properties
+	*
+	*
+	*	BASE STRUCTURE
+	*
+	*
 	*/
-	var app = {
-		reference: {},
-		view: {},
-		collection: {}
+	var App = {
+		Reference: {},
+		View: {},
+		Collection: {}
 	};
 
-	// Make call to app.collection.pokedex API
-	var requestStream = Rx.Observable.just('api/pokemon.json');
 
-	// Receive data from app.collection.pokedex API call
+
+	/**
+	*
+	*
+	*	RETRIEVE DATA
+	*
+	*
+	*/
+	var requestStream = Rx.Observable.just('api/pokemon.json');
 	var responseStream = requestStream
 		.flatMap(function (reqURL) {
 			return Rx.Observable.fromPromise($.getJSON(reqURL));
 		});
-
-	// Subscribe to data from app.collection.pokedex API call
 	responseStream.subscribe(function (res) {
-		app.collection.pokedex = res;
+		App.Collection.pokedex = res;
 	});
 
+
+
 	/**
-	 *	anonymous
-	 *
-	 *	invoked in order to render specific pokemon
+	*
+	*
+	*	ROUTER & CONTROLLER
+	*
+	*
 	*/
 	(function () {
+		/**
+		*
+		*
+		*	ROUTER
+		*
+		*
+		*/
 		var routes = {
-			'/pokemon/:id': function (id) {
-				console.log(id);
-				app.reference.pokemonID = parseInt(id);
-				if (!app.collection.pokedex)
-					responseStream.subscribe(function () {
-						renderPokemon(app.reference.pokemonID);
-					});
-				else renderPokemon(app.reference.pokemonID);
-			}
+			'/pokemon/:id': pokemonRoute
+		}
+		Router(routes).init();
+
+
+
+		/**
+		*
+		*
+		*	POKEMON CONTROLLER
+		*
+		*
+		*/
+		function pokemonRoute(id) {
+			App.Reference.pokemonID = parseInt(id);
+			if (!App.Collection.pokedex)
+				responseStream.subscribe(function () {
+					renderPokemon(App.Reference.pokemonID);
+				});
+			else renderPokemon(App.Reference.pokemonID);
 		}
 
-		var router = Router(routes);
-		router.init();
 
+
+		/**
+		*
+		*
+		*	POKEMON RENDER
+		*
+		*
+		*/
 		function renderPokemon(id) {
 			var i = id - 1;
-			if (!app.view.pokemon) app.view.pokemon = rivets.bind($('#pokemon'));
-			app.view.pokemon.update({pokemon: app.collection.pokedex[i]});
+			if (!App.View.pokemon) App.View.pokemon = rivets.bind($('#pokemon'));
+			App.View.pokemon.update({pokemon: App.Collection.pokedex[i]});
 		}
 	})();
 });
