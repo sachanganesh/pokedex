@@ -35,7 +35,7 @@ $(function() {
 	/**
 	*
 	*
-	*	ROUTER & CONTROLLER
+	*	MAIN APPLICATION
 	*
 	*
 	*/
@@ -63,11 +63,11 @@ $(function() {
 		*/
 		function pokemonRoute(id) {
 			App.Reference.pokemonID = parseInt(id);
-			if (!App.Collection.pokedex)
-				responseStream.subscribe(function () {
-					renderPokemon(App.Reference.pokemonID);
-				});
-			else renderPokemon(App.Reference.pokemonID);
+			// if (!App.Collection.pokedex)
+			// 	responseStream.subscribe(function () {
+			// 		renderPokemon(App.Reference.pokemonID);
+			// 	});
+			// else renderPokemon(App.Reference.pokemonID);
 		}
 
 
