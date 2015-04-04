@@ -1,39 +1,43 @@
 $(function() {
-	var pokedex = null,
-	pokemonID = 1,
-	template = null;
+	var app = {
+		reference: {},
+		view: {},
+		collection: {}
+	};
 
-	function initRouter() {
-		var routes = {
-			'/pokemon/:id': function (id) {
-				pokemonID = parseInt(id);
-				if (pokedex != null) renderPokemon(pokemonID);
-			}
-		}
-
-		var router = Router(routes);
-		router.init();
-	}
-	initRouter();
-
-	// Make call to Pokedex API
+	// Make call to app.collection.pokedex API
 	var requestStream = Rx.Observable.just('api/pokemon.json');
 
-	// Receive data from Pokedex API call
+	// Receive data from app.collection.pokedex API call
 	var responseStream = requestStream
 		.flatMap(function (reqURL) {
 			return Rx.Observable.fromPromise($.getJSON(reqURL));
 		});
 
-	// Subscribe to data from Pokedex API call
+	// Subscribe to data from app.collection.pokedex API call
 	responseStream.subscribe(function (res) {
-		pokedex = res;
-		renderPokemon(pokemonID);
+		app.collection.pokedex = res;
 	});
 
+	(function () {
+		var routes = {
+			'/pokemon/:id': function (id) {
+				app.reference.pokemonID = parseInt(id);
+				if (app.collection.pokedex == null)
+					responseStream.subscribe(function () {
+						renderPokemon(app.reference.pokemonID);
+					});
+				else renderPokemon(app.reference.pokemonID);
+			}
+		}
+
+		var router = Router(routes);
+		router.init();
+	})();
+
 	function renderPokemon(id) {
-		i = id - 1;
-		if (template == null) template = rivets.bind($('#pokemon'), {pokemon: pokedex[i]});
-		else template.update({pokemon: pokedex[i]});
+		var i = id - 1;
+		if (app.view.pokemon == null) app.view.pokemon = rivets.bind($('#pokemon'), {pokemon: app.collection.pokedex[i]});
+		else app.view.pokemon.update({pokemon: app.collection.pokedex[i]});
 	}
 });
