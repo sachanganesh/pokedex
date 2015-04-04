@@ -1,8 +1,7 @@
-var template = null;
-
 $(function() {
 	var pokedex = null,
-	pokemonID = 1;
+	pokemonID = 1,
+	template = null;
 
 	function initRouter() {
 		var routes = {
