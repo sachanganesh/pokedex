@@ -1,7 +1,10 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300);
 @import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300);
+@import url(http://fonts.googleapis.com/css?family=Press+Start+2P);
 
-html { font-size: 67.5% ;}
+html { font-size: 67.5%; }
+
+canvas { border: 2px solid black; }
 
 h1 {
 	font-family: "Open Sans";
