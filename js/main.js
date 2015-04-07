@@ -82,7 +82,7 @@ $(function () {
 
 	/* View for landing page */
 	App.View.MainView = Backbone.View.extend({
-		tagName: 'div',
+		tagName: 'section',
 		template: _.template($('#main-template').html()),
 		render: function () {
 			this.$el.html(this.template);
@@ -92,7 +92,7 @@ $(function () {
 
 	/* View for a single Pokemon */
 	App.View.PokemonView = Backbone.View.extend({
-		tagName: 'div',
+		tagName: 'section',
 		template: _.template($('#pokemon-template').html()),
 		render: function () {
 			this.$el.html(this.template(this.model.toJSON()));
@@ -102,7 +102,7 @@ $(function () {
 
 	/* View for a complete Pokedex, composed of multiple Pokemon */
 	App.View.AppView = Backbone.View.extend({
-		el: 'section#PokedexApp',
+		el: 'article#PokedexApp',
 		initialize: function () {
 			App.Collection.pokemonList.on('reset', this.renderMain, this);
 			App.Collection.pokemonList.on('notAccessed', this.renderMain, this);

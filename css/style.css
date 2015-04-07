@@ -16,6 +16,21 @@ h2 {
 	color: #AAB2BD;
 }
 
+a.btn {
+	font-family: "Open Sans";
+	font-weight: 300;
+	font-size: 1.3125rem;
+	background-color: #ED5565;
+	color: white;
+	padding: 1.125rem 1.5rem;
+	border-radius: 3px;
+	text-decoration: none;
+}
+
+.center-btns {
+	text-align: center;
+}
+
 .landing-page .title {
 	font-size: 5rem;
 	text-align: center;
@@ -30,18 +45,6 @@ h2 {
 
 .landing-page .center-btns {
 	margin-top: 6rem;
-	text-align: center;
-}
-
-.landing-page a.btn {
-	font-family: "Press Start 2P";
-	font-weight: 300;
-	font-size: 1.3125rem;
-	background-color: #ED5565;
-	color: white;
-	padding: 1.125rem 1.5rem;
-	border-radius: 3px;
-	text-decoration: none;
 }
 
 .pokemon-page h1.header {
@@ -63,8 +66,19 @@ h2 {
 	font-family: "Open Sans";
 	font-weight: 300;
 	font-size: 2.5rem;
-	color: black;
+	color: #ED5565;
 	text-align: center;
+}
+
+.pokemon-page a.btn {
+	font-family: "Open Sans";
+	font-weight: 300;
+	font-size: 1.3125rem;
+	background-color: #ED5565;
+	color: white;
+	padding: 0.5rem 1.25rem;
+	border-radius: 3px;
+	text-decoration: none;
 }
 
 .pokemon-page table {
@@ -79,4 +93,5 @@ h2 {
 
 .arrow i {
 	color: black;
+	text-align: center;
 }
