@@ -76,3 +76,7 @@ h2 {
 .pokemon-page table td:nth-child(2n) {
 	color: #ED5565;
 }
+
+.arrow i {
+	color: black;
+}
