@@ -82,7 +82,7 @@ $(function () {
 
 	/* View for landing page */
 	App.View.MainView = Backbone.View.extend({
-		tagName: 'article',
+		tagName: 'div',
 		template: _.template($('#main-template').html()),
 		render: function () {
 			this.$el.html(this.template);
@@ -92,7 +92,7 @@ $(function () {
 
 	/* View for a single Pokemon */
 	App.View.PokemonView = Backbone.View.extend({
-		tagName: 'li',
+		tagName: 'div',
 		template: _.template($('#pokemon-template').html()),
 		render: function () {
 			this.$el.html(this.template(this.model.toJSON()));
@@ -120,7 +120,6 @@ $(function () {
 		renderPokemon: function () {
 			if (window.filter) {
 				var mod = App.Collection.pokemonList.get(window.filter);
-				console.log(mod.toJSON());
 				var view = new App.View.PokemonView({model: mod});
 				this.$el.html(view.render().el);
 			}
