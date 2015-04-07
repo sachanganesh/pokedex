@@ -11,6 +11,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
 		<link rel="stylesheet" href="css/normalize.min.css">
+		<link rel="stylesheet" href="css/skeleton.css">
 		<link rel="stylesheet" href="css/style.css">
 	</head>
 	<body>
@@ -29,17 +30,46 @@
 		<script type="text/template" id="main-template">
 			<div class="landing-page">
 				<h1 class="title">Pokedex</h1>
-				<h2 class="subtitle">An attempt to learn Backbone.js.</h2>
+				<h2 class="subtitle">You haven't caught them all, yet?</h2>
 				<div class="center-btns">
-					<a href="#/pokemon/1" class="btn">Open Device</a>
+					<a href="#/pokemon/1" class="btn">Enter</a>
 				</div>
 			</div>
 		</script>
 
 		<script type="text/template" id="pokemon-template">
-			<div class="pokemon-page">
-				<h1 class="">Pokedex</h1>
-				<%- name %>
+			<div class="pokemon-page container">
+				<h1 class="header">Pokedex</h1>
+				<div class="content">
+					<div class="row">
+						<div class="four columns offset-by-two">
+							<img src="http://pokeapi.co/media/img/<%- id %>.png">
+							<h3 class="name"><%- name %></h3>
+						</div>
+						<div class="four columns">
+							<table class="u-full-width">
+								<tbody>
+									<tr>
+										<td>ID</td>
+										<td><%- id %></td>
+									</tr>
+									<tr>
+										<td>Name</td>
+										<td><%- name %></td>
+									</tr>
+									<tr>
+										<td>Height (m)</td>
+										<td><%- height / 10 %></td>
+									</tr>
+									<tr>
+										<td>Weight (kg)</td>
+										<td><%- weight / 10 %></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
 			</div>
 		</script>
 

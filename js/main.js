@@ -119,7 +119,9 @@ $(function () {
 		},
 		renderPokemon: function () {
 			if (window.filter) {
-				var view = new App.View.PokemonView({model: App.Collection.pokemonList.get(window.filter)});
+				var mod = App.Collection.pokemonList.get(window.filter);
+				console.log(mod.toJSON());
+				var view = new App.View.PokemonView({model: mod});
 				this.$el.html(view.render().el);
 			}
 		}
