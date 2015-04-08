@@ -95,3 +95,9 @@ a.btn {
 	color: black;
 	text-align: center;
 }
+
+@media (max-width: 560px) {
+	.pokemon-page .content {
+		margin-top: 30px;
+	}
+}
